@@ -9,8 +9,8 @@
   const VENUE = 'Coffeebook, Shugyla, Almaty';
   const TZ = 'Asia/Almaty'; // UTC+05:00, no DST
   const DAYS = [
-    { id: '31', short: 'Sat, Oct 31', long: 'Saturday, October 31, 2026', iso: '2026-10-31' },
-    { id: '01', short: 'Sun, Nov 1', long: 'Sunday, November 1, 2026', iso: '2026-11-01' },
+    { id: '24', short: 'Sat, Oct 24', long: 'Saturday, October 24, 2026', iso: '2026-10-24' },
+    { id: '25', short: 'Sun, Oct 25', long: 'Sunday, October 25, 2026', iso: '2026-10-25' },
   ];
   const TIMES = ['14:00', '15:00', '16:00'];
   const state = { day: null, time: null };
