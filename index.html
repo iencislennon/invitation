@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>An invitation</title>
+  <meta name="theme-color" content="#FBF7F0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Sans:wght@400;500&display=swap&subset=cyrillic,latin" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="sheet">
+
+    <!-- 01–02 Envelope -->
+    <section class="screen" data-screen="envelope">
+      <p class="label accent">A little something for you</p>
+      <button class="envelope" id="envelope" type="button" aria-label="Open the invitation">
+        <span class="env-letter">
+          <span class="label accent">For you</span>
+          <span class="ornament" aria-hidden="true"></span>
+        </span>
+        <span class="env-flap-open" aria-hidden="true"></span>
+        <span class="env-body"></span>
+        <span class="env-folds" aria-hidden="true"></span>
+        <span class="env-flap" aria-hidden="true"></span>
+        <span class="seal" aria-hidden="true">A</span>
+      </button>
+      <div class="stack tight center">
+        <h1 class="display-title">For <span data-name>Аяжан</span></h1>
+        <p class="small secondary" id="envelope-hint">Open when you have a quiet minute.</p>
+      </div>
+      <p class="label muted hint"><span class="hint-line" aria-hidden="true"></span>Tap to open</p>
+    </section>
+
+    <!-- 03 Invitation question -->
+    <section class="screen" data-screen="invitation" hidden>
+      <div class="ornament" aria-hidden="true"></div>
+      <p class="label accent">An invitation</p>
+      <h2 class="display-title">Hey, <span data-name>Ayazhan</span></h2>
+      <div class="stack tight">
+        <p class="lead">There's something I've been wanting to ask you.</p>
+        <p class="lead">I really enjoy spending time with you, and I'd love to spend an afternoon together. Just us two, somewhere cozy.</p>
+      </div>
+      <p class="display-hero question">Would you go on a date with me?</p>
+      <p class="signature">— Ansar</p>
+      <div class="actions">
+        <button class="btn primary" data-go="plan" type="button">I'd love to ♡</button>
+        <button class="btn quiet" data-go="decline" type="button">Not this time</button>
+      </div>
+    </section>
+
+    <!-- 04 Plan (accepted) -->
+    <section class="screen choose" data-screen="plan" hidden>
+      <aside class="intro">
+        <div class="stack">
+          <p class="label accent">A little plan</p>
+          <h2 class="display-title">I found a cozy little place for us.</h2>
+        </div>
+        <!-- TODO: replace with an authentic photo of the actual Coffeebook (Shugyla, Almaty).
+             Drop the file next to index.html, e.g. coffeebook.jpg, and set data-src below / swap this block for an <img>.
+             Deliberately NOT a stock or AI image. -->
+        <figure class="photo" id="venue-photo">
+          <img id="venue-img" alt="Coffeebook, Shugyla, Almaty" hidden>
+          <div class="photo-placeholder" id="venue-placeholder">
+            <span class="label muted">Photo of Coffeebook</span>
+            <span class="small muted">Placeholder — replace with a real photo</span>
+          </div>
+        </figure>
+        <div class="stack tight">
+          <p class="sub">Coffeebook</p>
+          <p class="lead">Books, something sweet, and a good conversation. I thought you might like it.</p>
+          <a class="map-link label" href="https://2gis.kz/almaty/geo/70000001062151672" target="_blank" rel="noopener noreferrer">Shugyla, Almaty · Open in 2GIS<span class="sr-only"> (opens in a new tab)</span></a>
+        </div>
+      </aside>
+      <div class="choices">
+        <fieldset class="group">
+          <legend class="label accent">Day</legend>
+          <div class="chips" role="radiogroup" aria-label="Day" id="days"></div>
+        </fieldset>
+        <fieldset class="group">
+          <legend class="label accent">Time (Almaty)</legend>
+          <div class="chips" role="radiogroup" aria-label="Time" id="times"></div>
+        </fieldset>
+        <div class="group">
+          <label class="label accent" for="alt-time">Suggest another time <span class="muted">(optional)</span></label>
+          <input type="text" id="alt-time" maxlength="200" autocomplete="off" placeholder="Another day or time that suits you better">
+        </div>
+        <div class="preview-box" aria-live="polite">
+          <p class="label muted">Your afternoon</p>
+          <p class="sub accent" id="preview">Pick a day and time, or suggest your own.</p>
+        </div>
+        <div class="actions row">
+          <button class="btn primary" id="confirm" type="button" disabled>Confirm ♡</button>
+          <button class="btn quiet" data-go="decline" type="button">Not this time</button>
+        </div>
+        <p class="small error" id="confirm-error" role="alert" hidden>That didn't send. Please try once more.</p>
+      </div>
+    </section>
+
+    <!-- 05 Accepted confirmation -->
+    <section class="screen" data-screen="confirmed" hidden>
+      <div class="ornament" aria-hidden="true"></div>
+      <h2 class="display-hero">It's a date then ♡</h2>
+      <p class="lead">Looking forward to seeing you :)</p>
+      <dl class="summary">
+        <div><dt class="label muted">Place</dt><dd>Coffeebook, Shugyla, Almaty<br><a class="map-link small" href="https://2gis.kz/almaty/geo/70000001062151672" target="_blank" rel="noopener noreferrer">Open in 2GIS<span class="sr-only"> (opens in a new tab)</span></a></dd></div>
+        <div><dt class="label muted">Day</dt><dd id="c-day"></dd></div>
+        <div><dt class="label muted">Time</dt><dd id="c-time"></dd></div>
+      </dl>
+    </section>
+
+    <!-- 06 Decline -->
+    <section class="screen" data-screen="decline" hidden>
+      <div class="ornament" aria-hidden="true"></div>
+      <p class="label accent">Thank you for telling me</p>
+      <h2 class="display-hero">That's okay, really</h2>
+      <div class="stack tight">
+        <p class="lead">Thank you for being honest with me.</p>
+        <p class="lead">I appreciate it.</p>
+      </div>
+      <form class="note" id="note-form">
+        <label class="label muted" for="note-text">Leave a note, if you'd like.</label>
+        <textarea id="note-text" rows="5" maxlength="4000" placeholder="Anything you'd like to say... (optional)"></textarea>
+        <p class="small error" id="note-error" role="alert" hidden>That didn't send. Please try once more.</p>
+        <button class="btn primary" type="submit">Send response</button>
+      </form>
+    </section>
+
+    <!-- 07 Declined confirmation -->
+    <section class="screen" data-screen="declined" hidden>
+      <div class="ornament" aria-hidden="true"></div>
+      <h2 class="display-hero">Thank you for answering ♡</h2>
+      <p class="lead">I appreciate your honesty.</p>
+    </section>
+
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
